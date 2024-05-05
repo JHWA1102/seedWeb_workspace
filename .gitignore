@@ -1,2 +1,2 @@
 .metadata/
-demo/demo/src/main/resources/application.properties
+*.properties

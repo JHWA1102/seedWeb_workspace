@@ -54,9 +54,9 @@ public class MemberService {
 	@Transactional
 	public MemberDto signUp(SignUpDto signUpDto) {
 		
-		if(memberRepository.existsByUsername(signUpDto.getUsername())) {
-			throw new IllegalArgumentException("이미 사용 중인 사용자 이름입니다.");
-		}
+//		if(memberRepository.existsByUsername(signUpDto.getUsername())) {
+//			throw new IllegalArgumentException("이미 사용 중인 사용자 이름입니다.");
+//		}
 		
 		// Password 암호화
 		String encodedPassword = passwordEncoder.encode(signUpDto.getPassword());

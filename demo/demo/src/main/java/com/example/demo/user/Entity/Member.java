@@ -50,6 +50,8 @@ public class Member implements UserDetails {
 	
 	private String profileImg;
 	
+	private String socialType;
+	
 	@ElementCollection(fetch = FetchType.EAGER)
 	@Builder.Default
 	private List<String> roles = new ArrayList<>();
@@ -129,7 +131,8 @@ public class Member implements UserDetails {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
-	
-	
-	
+
+	public void setSocialType(String socialType) {
+		this.socialType = socialType;
+	}
 }

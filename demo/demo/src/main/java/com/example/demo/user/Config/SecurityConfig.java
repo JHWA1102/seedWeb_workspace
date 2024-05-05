@@ -32,12 +32,14 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests()
                 // 해당 API에 대해서는 모든 요청을 허가
-                .requestMatchers("/members/sign-in", "/members/sign-up").permitAll()
-                .requestMatchers("/members/sign-in", "/members/sign-up").permitAll()
+                // * PostMapping에 해당 *
+                .requestMatchers("/members/sign-in", "/members/sign-up", "/login/getGoogleAuthUrl").permitAll()
                 // USER 권한이 있어야 요청할 수 있음
                 .requestMatchers("/members/test").hasRole("USER")
                 // 이 밖에 모든 요청에 대해서 인증을 필요로 한다는 설정
-                .anyRequest().authenticated()
+                // 2024.05.05 SJH GetMapping Test를 위해서 임시로 permitAll로 설정해놓음
+//                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 // JWT 인증을 위하여 직접 구현한 필터를 UsernamePasswordAuthenticationFilter 전에 실행
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class).build();
